@@ -1,0 +1,251 @@
+%-------------------------
+% Resume in LateX
+% Author : Yanzhi Zhang
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+
+\pagestyle{fancy}
+\fancyhf{} % Clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate PDF is machine readable/ATS parsable
+\hypersetup{
+  pdfencoding=auto,
+  psdextra
+}
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item\small{
+    \textbf{#1}{: #2 \vspace{-2pt}}
+  }
+}
+
+% Just in case someone needs a heading that does not need to be in a list
+\newcommand{\resumeHeading}[4]{
+    \begin{tabular*}{0.99\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemii}{$\circ$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%-------------------------------------------------------------------------------
+%	HEADING INFORMATION
+%-------------------------------------------------------------------------------
+\begin{center}
+  \textbf{\Huge Yanzhi Zhang} \\ \vspace{1pt}
+  +86-150-0076-4330 \ $|$ \ yanzhi.zhang.95@gmail.com \\ \vspace{1pt}
+\end{center}
+
+%-----------EXPERIENCE-----------------
+\section{Professional Experience}
+\resumeSubHeadingListStart
+\resumeSubheading
+{Guotai JunAn Securities}{Shanghai, China}
+{Quantitative and Algorithm Engineer - Fixed Income, Commodities, and Currencies Department}{July 2024 - Present}
+\resumeItemListStart
+\resumeItem{Government Bond Quantitative Model Update}
+{Responsible for data cleaning and constructing a prediction system that includes six categories of factors such as macro interest rates and term structure. Optimized parameter combinations using XGBoost and time-series cross-validation framework, screened important factors related to government bond performance, and debugged model parameters to optimize prediction capabilities. Improved quarterly backtest Sharpe ratio by 0.35, reduced annualized volatility by 18\%, and enhanced model stability in live trading.}
+\resumeItem{Spread Combination Market Making Strategy}
+{Developed a spread combination market-making strategy, constructed a bilateral quotation strategy based on lv2 liquidity and term spreads, achieved continuous market-making requirements with an average daily quotation width reduction of 1.5bp, designed a parameterized market-making model based on actual needs, and set reasonable risk control conditions. After multiple rounds of testing and optimization, completed internal testing and delivered to the business team by the end of December. The strategy runs smoothly and meets various scenario requirements.}
+\resumeItem{Commodity-Government Bond Futures Swap System}
+{Independently developed a commodity-government bond futures swap system, led the reconstruction of the commodity income swap trading system, designed a margin optimization module based on Monte Carlo simulation, reducing customer margin occupation by 15\%. Constructed a commodity futures basis trading strategy framework, supporting five arbitrage modes such as cross-period and cross-variety, with an average daily strategy trading volume of 120 million yuan.}
+\resumeItemListEnd
+
+\resumeSubheading
+{Guotai JunAn Securities}{Shanghai, China}
+{Software Development Engineer - Information Technology Department (Serving Equity Customer Needs)}{December 2022 - July 2024}
+\resumeItemListStart
+\resumeItem{OTC Margin Trading System}
+{Developed an OTC margin trading system, providing high-frequency margin locking API access for ordinary swap project managers and their customers in the equity customer needs department, designed a margin counter management interface to streamline operations such as margin locking, achieving over 300 automatic margin locking transactions per day, saving 2.5 hours of manual operation per day.}
+\resumeItem{OTC One-Account System Transformation}
+{Transformed the OTC one-account system of the equity customer needs department, generating multiple independent sub-accounts of different business types under the same main account, and splitting functions such as clearing and bookkeeping into sub-accounts to facilitate customers' management of trading positions and risks of different teams, achieving refined management.}
+\resumeItem{Overseas Futures Income Swap Trading Path}
+{Opened the overseas futures income swap trading path for OTC swap customers in the equity customer needs department, and integrated the daily clearing of overseas futures into the daily clearing of OTC income swaps, enabling customers to place orders for overseas futures directly from the Junyan client or Fix port, thereby reducing slippage caused by placing orders through Guotai JunAn traders.}
+\resumeItem{Overseas Futures Income Swap Trading Bookkeeping Module}
+{Developed an overseas futures income swap trading bookkeeping module, designed a cross-border futures income swap clearing engine, supporting Delta hedging, achieving time-point clearing, and integrating into the OTC income swap system clearing module, supporting millisecond-level order placement for Hong Kong/US stock futures spread strategies, with an average daily execution scale exceeding 80 million yuan.}
+\resumeItemListEnd
+
+\resumeSubheading
+{Amazon AWS}{Seattle, WA}
+{Software Development Engineer (Elastic Compute Cloud EC2 Security)}{April 2020 - November 2022}
+\resumeItemListStart
+\resumeItem{Nitro Group Access Module}
+{Designed and developed a new Nitro group access module, enabling EC2 Nitro groups to continuously deploy AWS services within the scope of rules on Nitro Log servers through internal CDK deployment pipelines, reducing the time required for manual deployment scripts to within 4 working days.}
+\resumeItem{Nitro Log Integration Services}
+{Developed integration services for Nitro Log, consolidating access logs of Nitro EC2 hosts to reduce daily Nitro access log traffic by nearly 40\%, saving 20\% of computational power used for log processing, thereby reducing the AWS service cost involved by 20\%.}
+\resumeItem{Security Credential Migration}
+{Migrated long-term security credentials of internal services to short-term security credentials rotating every hour, reducing the blast radius of service compromise by limiting the time and actions each credential key is entitled to, helping improve the security of AWS internal core services.}
+\resumeItem{Configuration Synchronization Service Optimization}
+{Improved the computational speed of the configuration synchronization service by simplifying API calls and optimizing memory usage, reducing runtime by 30\%, and lowering the projected EC2 instance fleet size by 10\%, reducing related AWS service annual expenditure by 20\%.}
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------INTERNSHIPS-----------------
+\section{Internships}
+\resumeSubHeadingListStart
+\resumeSubheading
+{IHS Markit}{New York, NY}
+{Software Development Intern}{Summer 2019}
+\resumeItemListStart
+\resumeItem{Splunk Log Data Analysis}
+{Analyzed Splunk log data of the global market department, provided technical and data support to improve market collaboration strategies, and performed statistical analysis on server load and processing speed to identify and resolve related server performance bottlenecks.}
+\resumeItem{Server Framework Optimization}
+{Assisted in improving the server framework of the global market department, optimizing processing speed during peak hours.}
+\resumeItem{Global Innovation Challenge}
+{Participated in the Global Innovation Challenge and presented data science-driven solutions to senior leadership.}
+\resumeItemListEnd
+
+\resumeSubheading
+{IBM Company Limited}{Beijing, China}
+{Technical Consulting Intern}{Summer 2016}
+\resumeItemListStart
+\resumeItem{SVN Server Efficiency Improvement}
+{Improved the efficiency of the SVN server of China Development Bank by reducing redundant data, modifying query structure, and optimizing query execution time and overall system I/O time.}
+\resumeItem{Financial Regulation Document Preparation}
+{Prepared financial regulation documents and credit and market risk reports to assist consultants in diagnosing internal risks.}
+\resumeItem{Risk Management Report}
+{Collaborated with senior consultants to draft the "Bank of China-Principles for Effective Risk Management" report.}
+\resumeItemListEnd
+
+\resumeSubheading
+{Ernst \& Young Hua Ming LLP}{Shanghai, China}
+{Audit Intern}{Summer 2015}
+\resumeItemListStart
+\resumeItem{Financial Statement Review}
+{Reviewed clients' financial statements and related disclosures to assess the completeness of financial data, ensuring compliance with Chinese mainland auditing standards.}
+\resumeItem{Annual Report Data Maintenance}
+{Entered, organized, and maintained annual report data of domestic listed companies.}
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------EDUCATION-----------------
+\section{Education}
+\resumeSubHeadingListStart
+\resumeSubheading
+{Columbia University in the City of New York}{New York, NY}
+{Master of Arts in Statistics}{2018 - 2020}
+\resumeItemListStart
+\resumeItem{Selected Coursework}
+{Stochastic Calculus, Time Series, Optimization Models and Methods, Advanced Data Analysis}
+\resumeItemListEnd
+
+\resumeSubheading
+{University of Toronto, St. George}{Toronto, Canada}
+{Bachelor of Science in Computer Science and Mathematics (Honors)}{2016 - 2018}
+\resumeItemListStart
+\resumeItem{Selected Coursework}
+{Probabilistic Learning and Reasoning, Neural Networks and Deep Learning, Operating Systems}
+\resumeItemListEnd
+
+\resumeSubheading
+{Queen’s University}{Kingston, Canada}
+{Bachelor of Science in Computer Science and Mathematics (Transferred to UofT)}{2014 - 2016}
+\resumeSubHeadingListEnd
+
+%-----------RESEARCH-----------------
+\section{Research Experience}
+\resumeSubHeadingListStart
+\resumeSubheading
+{NYC Taxi Consumption Income Prediction}{New York, NY}
+{Project Course}{Spring 2019}
+\resumeItemListStart
+\resumeItem{Classification Tree Model Training}
+{Trained a classification tree model, using Boosting techniques to predict consumption amounts and improve test set accuracy.}
+\resumeItem{Pick-up and Drop-off Heat Map}
+{Helped establish a heat map of pick-up and drop-off points, studying the geographical demand distribution of taxis.}
+\resumeItem{Historical Ride Data Analysis}
+{Analyzed historical ride data and predicted regions with the highest future demand to optimize taxi drivers' routes.}
+\resumeItemListEnd
+
+\resumeSubheading
+{Attention-Based Neural Network Translation Machine}{Toronto, Canada}
+{Project Course}{Spring 2018}
+\resumeItemListStart
+\resumeItem{Neural Network Training}
+{Trained a neural network with an encoder-decoder structure to convert strings of characters into the desired alphabetical order.}
+\resumeItem{Base Model Optimization}
+{Used a base model with GRU (Gated Recurrent Unit) and attention techniques to improve convergence speed.}
+\resumeItem{Attention Structure Evaluation}
+{Evaluated the robustness of the attention structure by assessing extreme cases such as random characters and special symbols.}
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------OTHER INFORMATION-----------------
+\section{Additional Information}
+\resumeSubHeadingListStart
+\resumeSubItem{Skills}
+{Proficient in Python, Java, C++, R, and SQL server; fluent in English}
+\resumeSubItem{Personality}
+{Cheerful, sunny, outgoing, and friendly, with strong cross-cultural communication skills, good at teamwork, and strong execution ability}
+\resumeSubItem{Interests}
+{Tennis, fitness, photography, reading}
+\resumeSubHeadingListEnd
+%-------------------------------------------
+\end{document}
