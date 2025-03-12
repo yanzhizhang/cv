@@ -1,0 +1,252 @@
+%-------------------------
+% Resume in LateX
+% Author : Yanzhi Zhang
+% License : MIT
+%------------------------
+
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{fontspec}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{ctex}
+
+\pagestyle{fancy}
+\fancyhf{} % Clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Formatting for section titles: small caps, ragged right alignment, large font size, black color underline
+\titleformat{\section}
+  {\vspace{-4pt}\scshape\raggedright\large}
+  {}
+  {0em}
+  {}
+  [\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate PDF is machine readable/ATS parsable
+\hypersetup{pdfencoding=auto, psdextra}
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item\small{
+    \textbf{#1}{: #2 \vspace{-2pt}}
+  }
+}
+
+% Just in case someone needs a heading that does not need to be in a list
+\newcommand{\resumeHeading}[4]{
+    \begin{tabular*}{0.99\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemii}{$\circ$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%-------------------------------------------------------------------------------
+%	HEADING INFORMATION
+%-------------------------------------------------------------------------------
+\begin{center}
+  \textbf{\Huge 张彦之} \\ \vspace{1pt}
+  +86-150-0076-4330 \ $|$ \ yanzhi.zhang.95@gmail.com \\ \vspace{1pt}
+\end{center}
+
+%-----------EXPERIENCE-----------------
+\section{工作经历}
+\resumeSubHeadingListStart
+\resumeSubheading
+{国泰君安证券公司}{上海，中国}
+{策略及算法工程师-固定收益商品外汇部}{2024年7月-至今}
+\resumeItemListStart
+\resumeItem{国债量化模型更新}
+{负责数据清洗、构建包含宏观利率、期限结构等6大类因子的预测体系，通过XGBoost+时序交叉验证框架优化参数组合，筛选与国债表现相关的重要因子，并调试模型参数以优化预测能力，使季度回测夏普比率提升0.35，实盘年化波动率降低18\%，提升模型在实盘交易的稳定性。}
+\resumeItem{利差组合做市策略}
+{开发利差组合做市策略，综合lv2流动性、期限价差构建双边报价策略，实现日均报价宽度缩减1.5bp情况下持续完成做市要求，结合实际需求设计参数化做市模型，并设置合理的风控条件；多轮测试优化策略逻辑，在12月底完成内部测试并交付业务团队，策略运行平稳并满足各类场景需求。}
+\resumeItem{商品国债期货互换系统}
+{自主开发商品国债期货互换系统，主导商品收益互换交易系统重构，设计基于蒙特卡洛模拟的保证金优化模块，降低客户保证金占用15\%。构建商品期货基差交易策略框架，支持跨期、跨品种等5种套利模式，日均策略交易量达1.2亿元。}
+\resumeItemListEnd
+
+\resumeSubheading
+{国泰君安证券公司}{上海，中国}
+{软件开发工程师-信息技术部（服务权益客需部门）}{2022年12月-2024年7月}
+\resumeItemListStart
+\resumeItem{场外端融券系统}
+{开发场外端融券系统，为权益客需部的普通互换项目经理及其客户提供多平台的高频锁券的API接入，设计锁券柜台管理界面将约券锁券等操作流程化，接入实现日均300+笔自动锁券交易，节省人工操作2.5小时/日。}
+
+\resumeItem{场外一账通系统改造}
+{改造权益客需部场外一账通系统，在同一主账户下生成多个不同业务类型且互相独立的子账户，并将清算簿记等功能分拆到子账户下，以便客户管理下不同团队的交易头寸和风险，以实现精细化管理。}
+\resumeItem{境外期货收益互换交易通路}
+{打通权益客需部场外互换客户境外期货收益互换交易通路，并将境外期货的日常清算并入每日场外收益互换的日常清算中，帮助客户能直接从君衍客户端或者Fix端口直接下单境外期货到交易所，从而减少向国君交易员下单而产生的滑点。}
+\resumeItem{海外期货收益互换交易簿记模块}
+{开发海外期货收益互换交易簿记模块，设计跨境期货收益互换清算引擎，支持Delta对冲，实现分时点清算，并入场外收益互换系统清算模块，支持港股/美股期货价差策略毫秒级报单，日均执行规模超8000万元。}
+\resumeItemListEnd
+
+\resumeSubheading
+{AMAZON AWS（亚马逊网络服务有限公司）}{西雅图，美国}
+{软件开发工程师（弹性云计算 EC2 Security）}{2020年4月-2022年11月}
+\resumeItemListStart
+\resumeItem{Nitro组接入模组}
+{设计并开发新的Nitro组接入模组，使EC2 Nitro组能够通过内部CDK部署管道持续部署规则范围内在Nitro Log服务器上的AWS服务，使得以往需要繁复脚本手动部署的时间缩短到4个工作日内。}
+\resumeItem{Nitro Log整合服务}
+{开发对于Nitro Log的整合服务，对Nitro EC2主机的接入日志进行整合，以减少每日Nitro接入日志的流量接近40\%，节省运算日志所占用的算力达20\%，使得原本所涉及到的AWS服务成本降低20\%。}
+\resumeItem{安全凭证迁移}
+{将内部服务的长期安全凭证迁移到每小时轮换一次的短期安全凭证，通过限制每个凭证密钥的时间和行动，减少被攻击者破坏的服务的爆炸半径，帮助提高AWS内部核心服务的安全性。}
+\resumeItem{配置同步服务优化}
+{通过简化API调用和优化内存使用，提高配置同步服务的计算速度，将运行时间减少了30\%，将预计的EC2实例队列大小降低10\%，为组内减少了20\%的相关AWS服务的年支出。}
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------INTERNSHIPS-----------------
+\section{实习经历}
+\resumeSubHeadingListStart
+\resumeSubheading
+{IHS MARKIT}{纽约，美国}
+{软件开发实习生}{2019年暑期}
+\resumeItemListStart
+\resumeItem{Splunk日志数据分析}
+{分析全球市场部门的Splunk日志数据，并提供技术及数据支持来改善市场协作策略，并按照服务器负载和处理速度对处理Splunk数据进行统计分析，以处理并解决相关服务器性能瓶颈问题。}
+\resumeItem{服务器框架优化}
+{协助改进全球市场部门的服务器框架，优化高峰期的处理速度。}
+\resumeItem{全球创新挑战赛}
+{参加全球创新挑战赛，并向高层领导介绍数据科学驱动的解决方案。}
+\resumeItemListEnd
+
+\resumeSubheading
+{IBM（中国）有限公司}{北京，中国}
+{技术咨询实习生}{2016年暑期}
+\resumeItemListStart
+\resumeItem{SVN服务器效率提升}
+{通过减少冗余数据，修改查询结构，优化查询时间和整体系统I/O时间，提高了国家开发银行SVN服务器效率。}
+\resumeItem{金融监管文件编写}
+{编写金融监管文件和信贷及市场风险报告，协助顾问诊断内部风险。}
+\resumeItem{风险管理报告}
+{与高级顾问合作起草《中国银行-有效风险管理原则》报告。}
+\resumeItemListEnd
+
+\resumeSubheading
+{安永华明会计师事务所}{上海，中国}
+{审计实习生}{2015年暑期}
+\resumeItemListStart
+\resumeItem{财务报表审查}
+{审查客户财务报表和相关披露，以评估财务数据的完整性，确保符合中国内地审计准则。}
+\resumeItem{年报数据维护}
+{录入整理维护国内上市公司年报数据。}
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------EDUCATION-----------------
+\section{教育背景}
+\resumeSubHeadingListStart
+\resumeSubheading
+{美国哥伦比亚大学}{纽约，美国}
+{统计学硕士}{2018 - 2020}
+\resumeItemListStart
+\resumeItem{课程}
+{随机微积分/时间序列/优化模型和方法/高级数据分析}
+\resumeItemListEnd
+
+\resumeSubheading
+{多伦多大学}{多伦多，加拿大}
+{计算机科学和数学理学士（荣誉学位）}{2016 - 2018}
+\resumeItemListStart
+\resumeItem{课程}
+{概率学习与推理/神经网络与深度学习/操作系统}
+\resumeItemListEnd
+
+\resumeSubheading
+{加拿大皇后大学}{金斯顿，加拿大}
+{计算机科学和数学理学士（转学至多伦多大学）}{2014 - 2016}
+\resumeSubHeadingListEnd
+
+%-----------RESEARCH-----------------
+\section{研究经历}
+\resumeSubHeadingListStart
+\resumeSubheading
+{NYC出租车消费收入预测}{纽约，美国}
+{项目课程}{2019春季学期}
+\resumeItemListStart
+\resumeItem{分类树模型训练}
+{训练分类树模型，利用Boosting技术预测消费数额，以提高测试集的准确性。}
+\resumeItem{接送站热力图}
+{帮助建立接送站热力图，研究出租车的地理需求分布。}
+\resumeItem{历史乘车数据分析}
+{通过分析历史乘车数据和预测未来需求最高的地区，优化出租车司机的路线。}
+\resumeItemListEnd
+
+\resumeSubheading
+{基于ATTENTION的神经网络翻译机器}{多伦多，加拿大}
+{项目课程}{2018春季学期}
+\resumeItemListStart
+\resumeItem{神经网络训练}
+{训练具有编码器-解码器结构的神经网络，将字母串转换为所需的字母顺序。}
+\resumeItem{基础模型优化}
+{利用具有GRU（门控循环单元）和注意力技术的基础模型来提高收敛速度。}
+\resumeItem{注意力结构评估}
+{通过评估极端情况，例如随机字符和特殊服务，来评估注意力结构的稳健型。}
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------OTHER INFORMATION-----------------
+\section{其他信息}
+\resumeSubHeadingListStart
+\resumeSubItem{技能}
+{精通Python、Java、C++、R等编程语言}
+\resumeSubItem{技能}
+{精通MySql、PostgreSQL、MongoDB、ClickHouse 等数据库}
+\resumeSubHeadingListEnd
+%-------------------------------------------
+\end{document}
