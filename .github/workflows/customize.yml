@@ -1,0 +1,85 @@
+name: Customize CV for Job Descriptions
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "jobs/*.md"
+
+permissions:
+  contents: write
+
+jobs:
+  customize:
+    name: Generate tailored CVs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Detect changed job files
+        id: changed
+        run: |
+          FILES=$(git diff --name-only --diff-filter=ACM HEAD~1 HEAD -- 'jobs/*.md' | grep -v '_template\.md' || true)
+          if [ -z "$FILES" ]; then
+            echo "No new/changed job files found."
+            echo "has_jobs=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "Found job files:"
+            echo "$FILES"
+            # Write to multiline output
+            {
+              echo "files<<EOF"
+              echo "$FILES"
+              echo "EOF"
+            } >> "$GITHUB_OUTPUT"
+            echo "has_jobs=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Setup Python
+        if: steps.changed.outputs.has_jobs == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        if: steps.changed.outputs.has_jobs == 'true'
+        run: pip install -r scripts/requirements.txt
+
+      - name: Generate customized CVs
+        if: steps.changed.outputs.has_jobs == 'true'
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          echo "${{ steps.changed.outputs.files }}" | while IFS= read -r job_file; do
+            [ -z "$job_file" ] && continue
+            echo "=== Customizing for: $job_file ==="
+            python scripts/customize_cv.py "$job_file"
+          done
+
+      - name: Compile customized CVs
+        if: steps.changed.outputs.has_jobs == 'true'
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: "customized/*_en.tex"
+          glob_root_file: true
+          compiler: pdflatex
+          args: -interaction=nonstopmode -file-line-error
+          working_directory: .
+
+      - name: Upload customized CV artifacts
+        if: steps.changed.outputs.has_jobs == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: customized-cvs
+          path: customized/*.pdf
+          retention-days: 90
+
+      - name: Auto-commit customized CVs
+        if: steps.changed.outputs.has_jobs == 'true'
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "ci: generate customized CVs [skip ci]"
+          file_pattern: "customized/*"
