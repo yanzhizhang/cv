@@ -1,0 +1,72 @@
+name: CV LaTeX Pipeline
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  compile:
+    name: Compile CV PDFs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # English CV — pdflatex (no CJK fonts needed)
+      - name: Compile English CV
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: yanzhi_zhang_cv_en.tex
+          compiler: pdflatex
+          args: -interaction=nonstopmode -file-line-error
+
+      # Chinese CV — xelatex (requires fontspec + ctex for CJK)
+      - name: Compile Chinese CV
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: yanzhi_zhang_cv_cn.tex
+          compiler: xelatex
+          args: -interaction=nonstopmode -file-line-error
+
+      # Always upload PDFs as downloadable artifacts
+      - name: Upload CV artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: cv-pdfs
+          path: |
+            yanzhi_zhang_cv_en.pdf
+            yanzhi_zhang_cv_cn.pdf
+          retention-days: 90
+
+      # Auto-commit compiled PDFs back to repo (only on push to main, not PRs or tags)
+      - name: Auto-commit PDFs
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "ci: compile CV PDFs [skip ci]"
+          file_pattern: "*.pdf"
+
+  release:
+    name: Create GitHub Release
+    needs: compile
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download compiled PDFs
+        uses: actions/download-artifact@v4
+        with:
+          name: cv-pdfs
+
+      - name: Create release with PDFs
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            yanzhi_zhang_cv_en.pdf
+            yanzhi_zhang_cv_cn.pdf
+          generate_release_notes: true
