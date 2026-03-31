@@ -2,6 +2,26 @@
 
 LaTeX-based CV with automated compilation. Push your edits → GitHub Actions compiles PDFs → auto-committed back to `main`.
 
+## Repository Structure
+
+```
+yanzhi_zhang_cv_en.tex          # Main English CV (pdflatex)
+yanzhi_zhang_cv_cn.tex          # Main Chinese CV (xelatex)
+jobs/
+  _template.md                  # JD template — copy this for each new job
+  *.md                          # Your job descriptions (triggers AI customization)
+scripts/
+  customize_cv.py               # GPT-4o CV tailoring script
+  requirements.txt              # Python deps (openai, pyyaml)
+customized/                     # AI-generated tailored CVs (.tex + .pdf)
+.github/
+  workflows/cv.yml              # Base CV compilation pipeline
+  workflows/customize.yml       # JD-triggered customization pipeline
+  copilot-instructions.md       # GitHub Copilot project instructions
+CLAUDE.md                       # Claude Code / Claude project instructions
+Dockerfile + build.sh           # Local Docker build
+```
+
 ## Files
 
 | File                     | Language | Compiler   |
@@ -76,6 +96,15 @@ python scripts/customize_cv.py jobs/google_swe.md
 ```
 
 Output lands in `customized/{company}_{role}_en.tex`.
+
+## AI Assistant Instructions
+
+This repo includes project-level instructions for AI coding assistants:
+
+- **GitHub Copilot:** [`.github/copilot-instructions.md`](.github/copilot-instructions.md) — auto-loaded by Copilot Chat in VS Code
+- **Claude:** [`CLAUDE.md`](CLAUDE.md) — auto-loaded by Claude Code and Claude projects
+
+These files encode LaTeX conventions, build commands, editing guardrails (e.g. never fabricate experience), and workflow rules so that any AI assistant working in this repo understands the project context.
 
 ## License
 
