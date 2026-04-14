@@ -103,9 +103,28 @@
 %-----------EXPERIENCE-----------------
 \section{Professional Experience}
 \resumeSubHeadingListStart
+
+\resumeSubheading
+{QX Asset Management}{Shanghai, China}
+{Quantitative Developer}{November 2025 - Present}
+\resumeItemListStart
+\resumeItem{Altair Momentum Strategy Development and Launch}
+{Independently developed two momentum strategies (Altair2/Altair3) end-to-end for the equity high-frequency product line, covering opening auction sniping, buy/sell/stop-loss full trading workflow. Identified and resolved a serial callback bottleneck causing 10-second-level latency in high-frequency market data and an event queue overflow that led to data loss. Introduced a market data persistence mechanism (auction and price level) enabling intraday restart recovery. Successfully launched Altair2 into production with stable performance in ongoing validation.}
+\resumeItem{Equity Algorithmic Trading System Core Development}
+{Led the development of core modules for the equity algorithmic trading system to support multi-strategy parallel execution with low latency, covering high-speed order routing (aggressive/passive modes), risk control, market data callbacks, and order callbacks. Fixed critical stability issues including duplicate orders after fills (migrated to tick-driven logic) and illegal memory access caused by timeout handling. Built a comprehensive logging framework for observability, completed end-to-end testing on XTP simulation (order, execution report, capital, state), and successfully drove live deployment.}
+\resumeItem{CTA Futures Roll-Over System}
+{Extended the CTA 3.0 architecture to design a futures contract roll-over system, implementing core functionalities for far-month contract opening and exposure hedging (flattening). Independently set up a test environment and completed full-cycle validation from order placement through execution reports to position management. The system has entered pre-launch testing, with order amendment logic under active development to support more flexible roll execution strategies.}
+\resumeItem{Solar Factor Research Platform}
+{Built a local end-to-end Solar factor transpilation pipeline and factor testing environment to support the quantitative research team. Developed a companion toolchain including a production-ready Python factor toolkit and an in-progress C++ streaming computation engine for real-time index weight calculation and forward return streaming, providing an efficient factor production and validation loop for strategy research.}
+\resumeItem{Tick-Driven Trading System 2.0 Architecture Upgrade}
+{Participated in the design and migration of the next-generation tick-driven trading framework. Successfully compiled and launched the new PolicyServer architecture and completed integration testing in the simulation environment. Drove strategy adaptation on the new system (interface alignment, lifecycle management) and identified critical improvements in market data synthesis logic (missing OHLC) and startup sequencing (pre-auction initialization required), ensuring a smooth architecture transition.}
+\resumeItem{High-Frequency Market Data System and Engineering Optimization}
+{Optimized the tick-to-snapshot-to-OrderBook market data processing pipeline and fixed a data consistency issue where open/high/low prices were overwritten by last price. Designed an asynchronous logging system and hardware response monitoring interface. Achieved order-of-magnitude performance gains through O3 compiler optimization, adopted lock-free queues and shared memory data pipelines, and independently built a complete QTAPI and PolicyServer test environment to provide end-to-end validation for C++ streaming computation.}
+\resumeItemListEnd
+
 \resumeSubheading
 {Guotai JunAn Securities}{Shanghai, China}
-{Quantitative and Algorithm Engineer - Fixed Income, Commodities, and Currencies Department}{July 2024 - Present}
+{Quantitative and Algorithm Engineer - Fixed Income, Commodities, and Currencies Department}{July 2024 - Octorber 2025}
 \resumeItemListStart
 \resumeItem{Government Bond Quantitative Model Update}
 {Responsible for data cleaning and constructing a prediction system that includes six categories of factors such as macro interest rates and term structure. Optimized parameter combinations using XGBoost and time-series cross-validation framework, screened important factors related to government bond performance, and debugged model parameters to optimize prediction capabilities. Improved quarterly backtest Sharpe ratio by 0.35, reduced annualized volatility by 18\%, and enhanced model stability in live trading.}
